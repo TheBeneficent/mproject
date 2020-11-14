@@ -20,8 +20,11 @@ router.post('/', function (req, res) {
         }, 
         function (err, user) {
             console.log('returned from mongo');
-            if (err) return 
+            if (err) {
+                console.log(err);
                 res.status(500).send("There was a problem adding the information to the database.");
+            }
+
             res.status(200).send(user);
         });
 });
